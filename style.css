@@ -15,7 +15,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 100%;
+    width: 90%;
     max-width: 400px;
 }
 
@@ -69,4 +69,19 @@ button:hover {
     font-size: 0.9rem;
     color: #fff;
     opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    button {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .result {
+        font-size: 1rem;
+    }
 }

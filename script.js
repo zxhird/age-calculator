@@ -10,15 +10,24 @@ function calculateAge() {
     const birthDateObj = new Date(birthdate);
     const today = new Date();
 
-    let age = today.getFullYear() - birthDateObj.getFullYear();
-    const monthDifference = today.getMonth() - birthDateObj.getMonth();
+    const years = today.getFullYear() - birthDateObj.getFullYear();
+    const months = today.getMonth() - birthDateObj.getMonth();
+    const days = today.getDate() - birthDateObj.getDate();
 
-    if (
-        monthDifference < 0 || 
-        (monthDifference === 0 && today.getDate() < birthDateObj.getDate())
-    ) {
-        age--;
+    let adjustedYears = years;
+    let adjustedMonths = months;
+    let adjustedDays = days;
+
+    if (adjustedDays < 0) {
+        adjustedMonths--;
+        const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        adjustedDays += prevMonth.getDate();
     }
 
-    result.textContent = `You are ${age} years old.`;
+    if (adjustedMonths < 0) {
+        adjustedYears--;
+        adjustedMonths += 12;
+    }
+
+    result.textContent = `You are ${adjustedYears} years, ${adjustedMonths} months, and ${adjustedDays} days old.`;
 }
